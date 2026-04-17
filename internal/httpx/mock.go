@@ -59,7 +59,7 @@ func (c *MockClient) Do(req *http.Request) (*http.Response, error) {
 func respond(cType string, data []byte) io.Reader {
 	buf := bytes.Buffer{}
 	buf.WriteString("HTTP/1.1 200 OK\n")
-	buf.WriteString(fmt.Sprintf("Content-Type: %s\n\n", cType))
+	fmt.Fprintf(&buf, "Content-Type: %s\n\n", cType)
 	_, err := buf.Write(data)
 	if err != nil {
 		panic(err)

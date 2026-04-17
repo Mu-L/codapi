@@ -150,12 +150,10 @@ func (e *HTTP) translateHost(req *http.Request) bool {
 func (e *HTTP) responseText(resp *http.Response, body []byte) string {
 	var b bytes.Buffer
 	// status line
-	b.WriteString(
-		fmt.Sprintf("%s %d %s\n", resp.Proto, resp.StatusCode, http.StatusText(resp.StatusCode)),
-	)
+	fmt.Fprintf(&b, "%s %d %s\n", resp.Proto, resp.StatusCode, http.StatusText(resp.StatusCode))
 	// headers
 	for name := range resp.Header {
-		b.WriteString(fmt.Sprintf("%s: %s\n", name, resp.Header.Get(name)))
+		fmt.Fprintf(&b, "%s: %s\n", name, resp.Header.Get(name))
 	}
 	// body
 	if len(body) > 0 {
