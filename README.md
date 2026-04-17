@@ -30,7 +30,7 @@ To run Codapi locally, follow these steps:
 
 ```sh
 mkdir ~/codapi && cd ~/codapi
-curl -L -o codapi.tar.gz "https://github.com/nalgeon/codapi/releases/download/v0.13.0/codapi_0.13.0_linux_amd64.tar.gz"
+curl -L -o codapi.tar.gz "https://github.com/nalgeon/codapi/releases/latest/download/codapi_0.13.1_linux_amd64.tar.gz"
 tar xvzf codapi.tar.gz
 rm -f codapi.tar.gz
 ```
@@ -38,10 +38,7 @@ rm -f codapi.tar.gz
 3. Build the sample `ash` sandbox image:
 
 ```sh
-# optional: $DOCKER
-export DOCKER=docker
-
-$DOCKER build --file sandboxes/ash/Dockerfile --tag codapi/ash:latest sandboxes/ash
+docker build --file sandboxes/ash/Dockerfile --tag codapi/ash:latest sandboxes/ash
 ```
 
 4. Start the server:
@@ -62,9 +59,9 @@ See [codapi-js](https://github.com/nalgeon/codapi-js) to embed the JavaScript wi
 
 Running in production is a bit more involved. See these guides:
 
--   [Installing Codapi](docs/install.md)
--   [Updating Codapi](docs/update.md)
--   [Deploying to production](docs/production.md)
+- [Installing Codapi](docs/install.md)
+- [Updating Codapi](docs/update.md)
+- [Deploying to production](docs/production.md)
 
 ## Contributing
 

@@ -36,7 +36,7 @@ Install Codapi:
 ```sh
 sudo su - codapi
 cd /opt/codapi
-curl -L -o codapi.tar.gz "https://github.com/nalgeon/codapi/releases/download/v0.13.0/codapi_0.13.0_linux_amd64.tar.gz"
+curl -L -o codapi.tar.gz "https://github.com/nalgeon/codapi/releases/latest/download/codapi_0.13.1_linux_amd64.tar.gz"
 tar xvzf codapi.tar.gz
 rm -f codapi.tar.gz
 ```
