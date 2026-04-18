@@ -174,6 +174,11 @@ func readConfig(path string) (*Config, error) {
 	if cfg.HTTP == nil {
 		cfg.HTTP = &HTTP{}
 	}
+	if cfg.Docker == nil {
+		cfg.Docker = &Docker{Bin: "docker"}
+	} else if cfg.Docker.Bin == "" {
+		cfg.Docker.Bin = "docker"
+	}
 
 	return cfg, err
 }

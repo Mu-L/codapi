@@ -1,7 +1,6 @@
 package sandbox
 
 import (
-	"os"
 	"testing"
 
 	"github.com/nalgeon/be"
@@ -57,13 +56,9 @@ func TestValidate(t *testing.T) {
 
 func TestExec(t *testing.T) {
 	_ = ApplyConfig(cfg)
-	docker := os.Getenv("DOCKER")
-	if docker == "" {
-		docker = "docker"
-	}
 	t.Run("exec", func(t *testing.T) {
 		execy.Mock(map[string]execy.CmdOut{
-			docker + " run": {Stdout: "hello"},
+			"docker run": {Stdout: "hello"},
 		})
 		req := engine.Request{
 			ID:      "http_42",

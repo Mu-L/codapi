@@ -37,12 +37,7 @@ type Docker struct {
 // NewDocker creates a new Docker engine for a specific command.
 func NewDocker(cfg *config.Config, sandbox, command string) Engine {
 	cmd := cfg.Commands[sandbox][command]
-	exe := "docker"
-	// override docker with similar command
-	if env, ok := os.LookupEnv("DOCKER"); ok {
-		exe = env
-	}
-	return &Docker{cfg, cmd, exe}
+	return &Docker{cfg, cmd, cfg.Docker.Bin}
 }
 
 // Exec executes the command and returns the output.

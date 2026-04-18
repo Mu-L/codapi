@@ -8,11 +8,16 @@ import (
 
 // A Config describes application config.
 type Config struct {
-	PoolSize int   `json:"pool_size"`
-	Verbose  bool  `json:"verbose"`
-	Box      *Box  `json:"box"`
-	Step     *Step `json:"step"`
-	HTTP     *HTTP `json:"http"`
+	PoolSize int  `json:"pool_size"`
+	Verbose  bool `json:"verbose"`
+
+	// Defaults for boxes and steps.
+	Box  *Box  `json:"box"`
+	Step *Step `json:"step"`
+
+	// Engine settings.
+	Docker *Docker `json:"docker"`
+	HTTP   *HTTP   `json:"http"`
 
 	// These are the available containers ("boxes").
 	Boxes map[string]*Box `json:"boxes"`
@@ -110,6 +115,11 @@ type Step struct {
 // An HTTP describes HTTP engine settings.
 type HTTP struct {
 	Hosts map[string]string `json:"hosts"`
+}
+
+// A Docker describes Docker engine settings.
+type Docker struct {
+	Bin string `json:"bin"`
 }
 
 // setBoxDefaults sets default box properties

@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/http/httptest"
-	"os"
 	"testing"
 
 	"github.com/nalgeon/be"
@@ -17,6 +16,7 @@ import (
 
 var cfg = &config.Config{
 	PoolSize: 8,
+	Docker:   &config.Docker{Bin: "docker"},
 	Boxes: map[string]*config.Box{
 		"python": {},
 	},
@@ -58,12 +58,8 @@ func (s *server) close() {
 
 func Test_exec(t *testing.T) {
 	_ = sandbox.ApplyConfig(cfg)
-	docker := os.Getenv("DOCKER")
-	if docker == "" {
-		docker = "docker"
-	}
 	execy.Mock(map[string]execy.CmdOut{
-		docker + " run": {Stdout: "hello"},
+		"docker run": {Stdout: "hello"},
 	})
 
 	srv := newServer()

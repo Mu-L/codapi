@@ -13,6 +13,7 @@ var cfg = &config.Config{
 	HTTP: &config.HTTP{
 		Hosts: map[string]string{"localhost": "localhost"},
 	},
+	Docker: &config.Docker{Bin: "docker"},
 	Boxes: map[string]*config.Box{
 		"http":   {},
 		"python": {},
