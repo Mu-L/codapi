@@ -13,7 +13,7 @@ type Semaphore struct {
 // NewSemaphore creates a new semaphore of the specified size.
 func NewSemaphore(size int) *Semaphore {
 	tokens := make(chan struct{}, size)
-	for i := 0; i < size; i++ {
+	for range size {
 		tokens <- struct{}{}
 	}
 	return &Semaphore{tokens}
